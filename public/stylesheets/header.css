@@ -79,6 +79,7 @@
 /* menu hambuergueza */
 
 .menu {
+    scale: 0.9;
     -webkit-filter: url("#shadowed-goo");
             filter: url("#shadowed-goo");
   }

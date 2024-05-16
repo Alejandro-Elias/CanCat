@@ -6,6 +6,8 @@
     padding-top: 15px;
 }
 .similares-swiper{
+    display: flex;
+    justify-content: center;
     width: 100%;
     height: 100%;
   }
@@ -14,7 +16,7 @@
     text-align: center;
     font-size: 18px;
     background: #fff;
-    display: flex;
+    display: flex;    
     justify-content: center;
     align-items: center;
   }
@@ -28,6 +30,8 @@
 
 .cart-main {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     width: auto;
 }
 
@@ -113,9 +117,6 @@
     text-align: center;
 }
 
-
-
-
 .Productos-en-el-carrito__div__contador__eliminar {
     width: 25%;
     display: flex;
@@ -127,9 +128,6 @@
 
 .Productos-en-el-carrito__div__contador__eliminar img {
     max-width: 55px;
-
-
-
 }
 
 .Productos-en-el-carrito__div__contador__eliminar i {
@@ -319,22 +317,24 @@
 
 
 .formas__de__pago__total--pagar {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     width: 90%;
     max-width: 400px;
 }
 
 .formas__de__pago__total {
-    width: 30%;
     text-align: start;
-    margin-top: 10px;
+    margin: 10px 0;
 }
 
 .formas__de__pago__pagar {
-    width: 70%;
+    padding: 30px;
+    width: 170px;
     text-align: center;
     margin-bottom: 10px;
-    margin-left: 80px;
-    background-color: var(--ColorGris);
+    background-color: white;
     color: var(--ColorAzul);
     padding: 10px;
     border-radius: 15px;
@@ -496,11 +496,11 @@
 @media (min-width:1020px) {
     .cart-main {
         display: flex;
+        flex-direction: row;
         justify-content: flex-start;
         align-items: flex-start;
         flex-wrap: wrap;
         background-color: var(--ColorGris);
-        margin-top: 30px;
     }
 
     .cart-main-box {

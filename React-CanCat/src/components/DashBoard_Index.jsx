@@ -1,12 +1,13 @@
+
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Home } from './Home';
+import Dashboard from './Dashboard';
 
 
 function App() {
   return (
     <Router>
       <div>
-        <Home />
+        <Dashboard />
       </div>
     </Router>
   );

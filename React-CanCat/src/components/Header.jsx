@@ -6,6 +6,10 @@ export const Header = () => {
     M.AutoInit();
   }, []);
 
+  useEffect(() => {
+    
+  })
+
   return (
     <>
       <nav className="nav-extended  light-blue darken-4">

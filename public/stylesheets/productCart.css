@@ -28,10 +28,7 @@
 
 .cart-main {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-wrap: wrap;
-
+    width: auto;
 }
 
 .cart-main-box {
@@ -41,11 +38,10 @@
 }
 
 .Productos-en-el-carrito {
-    display: flex;
+    display: contents;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    height: auto;
     background-color: var(--ColorGris);
     row-gap: 10px;
     padding-bottom: 10px;
@@ -349,10 +345,11 @@
 
 
 
+
 .productos-similares {
 
     background-color: var(--ColorGris);
-    order: 2;
+    padding: 50px !important;
 }
 
 .swiper_titulo h3 {
@@ -503,13 +500,13 @@
         align-items: flex-start;
         flex-wrap: wrap;
         background-color: var(--ColorGris);
+        margin-top: 30px;
     }
 
     .cart-main-box {
         display: flex;
         flex-direction: column;
         width: 70%;
-        height: 650px;
         align-items: center;
     }
 
@@ -581,7 +578,9 @@
         display: none;
     }
     .similares {
-        padding-top: 58px;
+        background-color: var(--ColorGris);
+        padding-top: 10px;
+        padding-bottom: 20px;
     }
     .productos__marca__descripcion p{
         margin: 5px 0px;

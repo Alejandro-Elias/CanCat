@@ -4,7 +4,7 @@ function Usuarios() {
   const [usuarios, setUsuarios] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/apis/users')
+    fetch('https://cancat.onrender.com/apis/users')
       .then(response => response.json())
       .then(data => setUsuarios(data.usuarios))
       .catch(error => console.error('Error al obtener los usuarios:', error));

@@ -1,9 +1,9 @@
-import { Header } from "./Header"
+import Dashboard from "./Dashboard"
 
 export const Home = () => {
   return (
     <div>
-        <Header />
+        <Dashboard />
     </div>
   )
 }

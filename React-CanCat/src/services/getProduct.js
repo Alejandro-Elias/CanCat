@@ -1,7 +1,7 @@
 const getProduct = async (id) => {
 
     try {
-        const response = await fetch(`http://localhost:3000/apis/products/${id}`);
+        const response = await fetch(`https://cancat.onrender.com/apis/products/${id}`);
         const result = await response.json();
 
         if (result.ok) {

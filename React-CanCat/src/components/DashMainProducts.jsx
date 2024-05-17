@@ -14,7 +14,7 @@ function DashMainProducts() {
   const [species, setSpecies] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/apis/species')
+    fetch('https://cancat.onrender.com/apis/species')
       .then(response => response.json())
       .then(data => setSpecies(data.formattedSpecies))
       .catch(error => console.error('Error al obtener los productos:', error));

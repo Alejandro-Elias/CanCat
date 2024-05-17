@@ -7,7 +7,7 @@ const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/apis/products')
+    fetch('https://cancat.onrender.com/apis/products')
       .then(response => response.json())
       .then(data => setProducts(data.formattedProducts))
       .catch(error => console.error('Error al obtener los productos:', error));

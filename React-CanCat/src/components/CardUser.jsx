@@ -8,7 +8,7 @@ function CardUser({ userId }) {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/api/users/${userId}`);
+                const response = await fetch(`https://cancat.onrender.com/api/users/${userId}`);
                 const data = await response.json();
                 setUser(data.data);
             } catch (error) {

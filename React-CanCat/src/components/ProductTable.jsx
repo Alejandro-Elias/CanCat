@@ -13,7 +13,7 @@ function ProductTable() {
   const [noResults, setNoResults] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:3000/apis/products')
+    fetch('https://cancat.onrender.com/apis/products')
       .then(response => response.json())
       .then(data => setProducts(data.formattedProducts))
       .catch(error => console.error('Error al obtener los productos:', error));
@@ -30,6 +30,11 @@ function ProductTable() {
     setSelectedProduct(productDetail);
     setShowEditModal(true);
   };
+
+  const handleShowdeleteModal = async (id) => {
+    const productDetail = await getProduct(id);
+    setSelectedProduct(productDetail);
+  }
 
   const filteredProducts = products.filter(product =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -69,7 +74,7 @@ function ProductTable() {
                   <div className='d-flex gap-1 justify-content-center p-1'>
                     <Button onClick={() => handleShowProductModal(product.id)} variant="outline-success">Ver</Button>
                     <Button onClick={() => handleShowEditModal(product.id)} variant="outline-warning">Editar</Button>
-                    <Button variant="outline-danger">Eliminar</Button>
+                    <Button onClick={() => handleShowdeleteModal(product.id)} variant="outline-danger">Eliminar</Button>
                   </div>
                 </td>
               </tr>

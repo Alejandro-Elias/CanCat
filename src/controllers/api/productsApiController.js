@@ -251,8 +251,6 @@ const updateProduct = async (req, res) => {
         const { id } = req.params;
         const { nombre, categoria, precio, stock, sabores, descuento, descripcion, brand, measure, value } = req.body;
 
-        console.log(req.body)
-
         const image1 = req.files && req.files.image1 ? req.files.image1 : null;
         const image2 = req.files && req.files.image2 ? req.files.image2 : null;
 

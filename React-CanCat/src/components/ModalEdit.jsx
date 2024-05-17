@@ -24,17 +24,17 @@ export const ModalEdit = ({ showForm, handleCloseForm, prod }) => {
   });
 
   useEffect(() => {
-    fetch('http://localhost:3000/apis/species')
+    fetch('https://cancat.onrender.com/apis/species')
       .then(response => response.json())
       .then(data => setSpecies(data.formattedSpecies))
       .catch(error => console.error('Error al obtener las especies:', error));
 
-    fetch('http://localhost:3000/apis/flavor')
+    fetch('https://cancat.onrender.com/apis/flavor')
       .then(response => response.json())
       .then(data => setFlavor(data.formattedFlavor))
       .catch(error => console.error('Error al obtener los sabores:', error));
 
-    fetch('http://localhost:3000/apis/filing')
+    fetch('https://cancat.onrender.com/apis/filing')
       .then(response => response.json())
       .then(data => setFiling(data.formattedFiling))
       .catch(error => console.error('Error al obtener las medidas:', error));
@@ -79,11 +79,7 @@ export const ModalEdit = ({ showForm, handleCloseForm, prod }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const bodys = JSON.stringify(formValue)
-
-    console.log(bodys);
-
-    fetch(`http://localhost:3000/apis/products/${prod.id}`, {
+    fetch(`https://cancat.onrender.com/apis/products/${prod.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -96,6 +92,7 @@ export const ModalEdit = ({ showForm, handleCloseForm, prod }) => {
           handleCloseForm();
         } else {
           console.error('Fallo al enviar los datos');
+          handleCloseForm();
         }
       })
       .catch(error => console.error('Error:', error));

@@ -15,21 +15,21 @@ export const ModalCreate = ({ showForm, handleCloseForm }) => {
   const [filing, setFiling] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/apis/species')
+    fetch('https://cancat.onrender.com/apis/species')
       .then(response => response.json())
       .then(data => setSpecies(data.formattedSpecies))
       .catch(error => console.error('Error al obtener los productos:', error));
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:3000/apis/flavor')
+    fetch('https://cancat.onrender.com/apis/flavor')
       .then(response => response.json())
       .then(data => setFlavor(data.formattedFlavor))
       .catch(error => console.error('Error al obtener los productos:', error));
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:3000/apis/filing')
+    fetch('https://cancat.onrender.com/apis/filing')
       .then(response => response.json())
       .then(data => setFiling(data.formattedFiling))
       .catch(error => console.error('Error al obtener los productos:', error));
@@ -72,7 +72,7 @@ export const ModalCreate = ({ showForm, handleCloseForm }) => {
   
     console.log(data);
 
-    fetch('http://localhost:3000/apis/products', {
+    fetch('https://cancat.onrender.com/apis/products', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

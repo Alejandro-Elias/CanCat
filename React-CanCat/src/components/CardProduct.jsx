@@ -6,7 +6,7 @@ function CardProduct({ productId }) {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/apis/products/${productId}`)
+    fetch(`https://cancat.onrender.com/apis/products/${productId}`)
       .then(response => response.json())
       .then(data => setProduct(data.Producto))
       .catch(error => console.error('Error al obtener el producto:', error));

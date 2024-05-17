@@ -7,7 +7,7 @@ function UserTable() {
   const [noResults, setNoResults] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/users')
+    fetch('https://cancat.onrender.com/api/users')
       .then(response => response.json())
       .then(data => setUsers(data.data))
       .catch(error => console.error('Error al obtener los usuarios:', error));
@@ -34,7 +34,7 @@ function UserTable() {
       roleId: role == 1 ? 2 : 1
     };
   
-    fetch(`http://localhost:3000/api/users/jerarquia/${userId}`, {
+    fetch(`https://cancat.onrender.com/api/users/jerarquia/${userId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'

@@ -12,9 +12,9 @@ function DashMainUsers() {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/api/users');
+                const response = await fetch('https://cancat.onrender.com/api/users');
                 const data = await response.json();//
-                setLatestUser(data.data[0]);
+                setLatestUser(data.data[data.data.length - 1]);
                 setTotalUsers(data.meta.total);
                 
                 setTotalAdmins(data.data.filter(user => user.roleId === 1).length);

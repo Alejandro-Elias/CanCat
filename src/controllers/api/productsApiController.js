@@ -93,7 +93,7 @@ const getAllProducts = async (req,res) => {
                 },
                 {
                     association: 'product_stock',
-                    attributes: ['amount']
+                    attributes: ['amount', "id"]
                    
                 },
                 {

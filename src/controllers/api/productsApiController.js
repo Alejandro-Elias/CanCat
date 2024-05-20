@@ -26,12 +26,12 @@ const getAllProducts = async (req,res) => {
                 },
                 {
                     association: 'product_stock',
-                    attributes: ['amount']
+                    attributes: ['amount', 'flavorId']
                    
                 },
                 {
                     association: 'product_flavor',
-                    attributes: ['name', 'flavorId']
+                    attributes: ['name']
                 }
             ],
             attributes : ['id', 'name', "value", "description","price", "discount" ]
@@ -93,12 +93,12 @@ const getAllProducts = async (req,res) => {
                 },
                 {
                     association: 'product_stock',
-                    attributes: ['amount', "id"]
+                    attributes: ['amount',, "flavorId"]
                    
                 },
                 {
                     association: 'product_flavor',
-                    attributes: ['name', "flavorId"]
+                    attributes: ['name']
                 }
                
             ],

@@ -19,7 +19,7 @@ export const ModalEdit = ({ showForm, handleCloseForm, prod }) => {
     "precio": prod?.price || '',
     "descuento": prod?.discount || '',
     "stock": prod?.product_stock[0]?.amount || '',
-    "sabores": prod?.product_flavor?.id || '',
+    "sabores": prod?.product_flavor?.name || '',
     "measure": prod?.filingId || '',
     "value": prod?.value || '',
     "descripcion": prod?.description || '',

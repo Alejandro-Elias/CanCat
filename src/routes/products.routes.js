@@ -14,7 +14,7 @@ router
   .get('/filtrados/:categoria',filtrados)
   
   .get('/editar-articulo/:id', checkUserLogin, edit)
-  .put('/update/:id', checkUserLogin,  upload.fields([
+  .put('/update/:id', upload.fields([
   {
     name : 'image1'
   },

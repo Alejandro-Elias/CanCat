@@ -10,6 +10,8 @@ export const ModalEdit = ({ showForm, handleCloseForm, prod }) => {
   const [species, setSpecies] = useState([]);
   const [flavor, setFlavor] = useState([]);
   const [filing, setFiling] = useState([]);
+  const [file1, setFile1] = useState(null)
+  const [file2, setFile2] = useState(null)
   const [formValue, setFormValue] = useState({
     "nombre": prod?.name || '',
     "categoria": prod?.specieId || '',
@@ -20,7 +22,9 @@ export const ModalEdit = ({ showForm, handleCloseForm, prod }) => {
     "sabores": prod?.product_flavor?.id || '',
     "measure": prod?.filingId || '',
     "value": prod?.value || '',
-    "descripcion": prod?.description || ''
+    "descripcion": prod?.description || '',
+    "image1": prod?.image1 || '',
+    "image2": prod?.image2 || '',
   });
 
   useEffect(() => {
@@ -42,6 +46,7 @@ export const ModalEdit = ({ showForm, handleCloseForm, prod }) => {
 
   const handleImagenChange1 = (event) => {
     const file = event.target.files[0];
+    setFile1(file)
     const reader = new FileReader();
 
     reader.onloadend = () => {
@@ -55,6 +60,7 @@ export const ModalEdit = ({ showForm, handleCloseForm, prod }) => {
 
   const handleImagenChange2 = (event) => {
     const file = event.target.files[0];
+    setFile2(file)
     const reader = new FileReader();
 
     reader.onloadend = () => {
@@ -76,27 +82,55 @@ export const ModalEdit = ({ showForm, handleCloseForm, prod }) => {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    fetch(`https://cancat.onrender.com/apis/products/${prod.id}`, {
+    const formData1 = new FormData();
+    formData1.append('image1', file1)
+
+    const formData2 = new FormData();
+    formData2.append('image2', file2)
+
+    try {
+      const response = await fetch(`https://cancat.onrender.com/apis/products/${prod.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(formValue)
-    })
-      .then(response => {
+    });      
         if (response.ok) {
           console.log('Datos enviados exitosamente');
           handleCloseForm();
         } else {
           console.error('Fallo al enviar los datos');
-          handleCloseForm();
         }
-      })
-      .catch(error => console.error('Error:', error));
-  };
+
+  const response2 = await fetch(`https://cancat.onrender.com/productos/update/${prod.id}`, {
+    method: 'PUT',
+    body: formData1     
+  });
+
+  const result1 = await response2.json();
+
+  const response3 = await fetch(`https://cancat.onrender.com/productos/update/${prod.id}`, {
+    method: 'PUT',
+    body: formData2     
+  });
+
+  const result2 = await response3.json()
+
+  if (result1.success || result2.success) {
+    console.log('imagen/es subidas');    
+  } else {
+    console.log('no se subieron imagenes');
+  }
+
+    } catch (error) {
+      error => console.error('Error:', error)
+    }
+
+  } 
 
   return (
     <Modal
@@ -104,7 +138,7 @@ export const ModalEdit = ({ showForm, handleCloseForm, prod }) => {
       show={showForm}
       onHide={handleCloseForm}>
       <Modal.Header style={{ backgroundColor: "#0A6069" }} className='text-light d-flex w-100 justify-content-between px-4' >
-        <Modal.Title>Producto : </Modal.Title>
+        <Modal.Title>Producto : {formValue.nombre}</Modal.Title>
         <Button variant="outline-light" onClick={handleCloseForm}>
           Cerrar
         </Button>
@@ -177,14 +211,14 @@ export const ModalEdit = ({ showForm, handleCloseForm, prod }) => {
               <Form.Group as={Col} className='d-flex flex-column justify-content-between gap-2' controlId="image1">
                 <Form.Control type="file" placeholder="name@example.com" onChange={handleImagenChange1} hidden />
                 <div className=" d-flex flex-column justify-content-betweem gap-3 justify-content-between">
-                  <Image className='rounded w-auto img-fluid max-height  bg-light' style={{ height: "230px", maxHeight: '100%', width: 'auto', objectFit: 'contain' }} src={miniatura1} />
+                  <Image className='rounded w-auto img-fluid max-height  bg-light' style={{ height: "230px", maxHeight: '100%', width: 'auto',objectFit: 'contain' }} src= {miniatura1 != defaultImage ? miniatura1 : formValue.image1} />
                 </div>
                 <FormLabel className='btn btn-outline-light mx-3 '  >Agregar imagen</FormLabel>
               </Form.Group>
               <Form.Group as={Col} className='d-flex flex-column justify-content-between gap-2' controlId="image2">
                 <Form.Control type="file" placeholder="name@example.com" onChange={handleImagenChange2} hidden />
                 <div className=" d-flex flex-column justify-content-betweem gap-3 justify-content-between">
-                  <Image className='rounded w-auto img-fluid max-height  bg-light' style={{ height: "230px", maxHeight: '100%', width: 'auto', objectFit: 'contain' }} src={miniatura2} />
+                  <Image className='rounded w-auto img-fluid max-height  bg-light' style={{ height: "230px", maxHeight: '100%', width: 'auto', objectFit: 'contain' }} src={miniatura2 != defaultImage ? miniatura2 : formValue.image2} />
                 </div>
                 <FormLabel className='btn btn-outline-light mx-3 ' >Agregar imagen</FormLabel>
               </Form.Group>
